@@ -1,0 +1,34 @@
+# This is a kubernetes configuration file describing
+# how we want to have a gitlab deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitlab-deployment
+  labels:
+    app: gitlab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitlab
+  template:
+    metadata:
+      labels:
+        app: gitlab
+    spec:
+      containers:
+        - name: gitlab
+          image: gitlab/gitlab-ee:latest          
+          env:
+            - name: GITLAB_OMNIBUS_CONFIG
+              value: |
+                  external_url 'https://localhost'
+                  registry_external_url 'https://localhost:5050'
+                  gitlab_rails['gitlab_shell_ssh_port'] = 22
+          ports:
+            - containerPort: 80
+            - containerPort: 443
+            - containerPort: 22
+            - containerPort: 5050  
+      hostname: gitlab-smartclide
+      restartPolicy: Always

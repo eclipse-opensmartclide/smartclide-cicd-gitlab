@@ -1,0 +1,5 @@
+{
+  global.hosts.domain: example.com, 
+  global.hosts.gitlab.name: gitlab.example.com,
+  global.hosts.registry.name: registry.example.com
+}

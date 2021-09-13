@@ -1,0 +1,38 @@
+# This docker compose will start two services,
+# a gitlab instance and a gitlab-runner instance.
+# .env file contains the environment variables that the user should fill
+version: "3.5"
+services:
+  gitlab:
+    image: "${GITLAB_IMAGE}"
+    restart: always
+    hostname: "${GITLAB_HOST}"
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+            external_url  'https://${GITLAB_HOST}'
+            registry_external_url 'https://${GITLAB_HOST}:${REGISTRY_PORT}'
+            gitlab_rails['gitlab_shell_ssh_port'] = 22
+    ports:
+      - "${HTTP_PORT}:80"
+      - "${HTTPS_PORT}:443"
+      - "${SSH_PORT}:22"
+      - "${REGISTRY_PORT}:5050"
+    volumes:
+      - "${GITLAB_HOME}/config:/etc/gitlab"
+      - "${GITLAB_HOME}/logs:/var/log/gitlab"
+      - "${GITLAB_HOME}/data:/var/opt/gitlab"
+    networks:
+      - gitlab
+  gitlab-runner:
+    image: ${GITLAB_RUNNER_IMAGE}
+    restart: unless-stopped
+    depends_on:
+      - gitlab
+    volumes:
+      - ${GITLAB_HOME}/gitlab-runner:/etc/gitlab-runner
+      - ${GITLAB_HOME}/config/ssl:/certs
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - gitlab
+networks:
+  gitlab:

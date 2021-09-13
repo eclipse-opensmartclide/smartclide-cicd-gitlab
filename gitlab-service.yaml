@@ -1,0 +1,31 @@
+# This is a kubernetes service configuration for the gitlab deployment
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitlab
+  name: gitlab-deployment
+spec:
+  ports:
+  - name: http-port
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  - name: https-port
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  - name: ssh-port
+    port: 22
+    protocol: TCP
+    targetPort: 22
+  - name: registry-port
+    port: 5050
+    protocol: TCP
+    targetPort: 5050
+  selector:
+    app: gitlab
+  type: LoadBalancer
+status:
+  loadBalancer: {}
