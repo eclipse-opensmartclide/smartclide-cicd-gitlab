@@ -4,8 +4,8 @@
 
 SmartCLIDE Gitlab initialization and containerization.<br>
 
-This is a <b>Work In Progress</b> research that focuses on different ways to initialize and deploy a containerized gitlab instance.<br>
-This gitlab instance is part of the internal SmartCLIDE framework.
+This is a <b>Work In Progress</b> research that focuses on different ways to automate the deployment, initialization and containerization of gitlab instance.<br>
+This gitlab instance will be part of the internal SmartCLIDE framework.
 
 <b>Below is a showcase of different ways of setting up and running a gitlab instance.</b>
 ## Docker Compose
