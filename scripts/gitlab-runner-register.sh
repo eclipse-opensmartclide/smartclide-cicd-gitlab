@@ -11,7 +11,7 @@ RUNNER_CONTAINER_ID=$(docker ps | grep "$GITLAB_RUNNER_IMAGE" | awk '{ print $1 
 docker exec -it $RUNNER_CONTAINER_ID gitlab-runner register \
     --non-interactive \
     --tls-ca-file=/certs/$GITLAB_HOST.crt \
-    --registration-token $REGISTRATION_TOKEN \
+    --registration-token $GITLAB_RUNNER_REGISTRATION_TOKEN \
     --locked=false \
     --description docker-gitlab-runner \
     --url https://$GITLAB_HOST \
