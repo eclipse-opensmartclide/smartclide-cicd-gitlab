@@ -19,8 +19,13 @@ Update the environment variables in .env file and run the following command.<br>
 docker-compose up
 ```
 This will start a gitlab container with registry enabled and a gitlab-runner container.<br>
-#### Install Gitlab-runner
-To register a gitlab runner in the gitlab instance fill the registration token in <b>.env</b> file and run the following command.
+Below is the initial root password
+```sh
+cat /srv/gitlab/config/initial_root_password
+```
+#### Register Gitlab-runner
+To register a gitlab runner in the gitlab instance fill the runner registration token and the gitlab host variables in <b>.env</b> file and run the following command.<br>
+The variables can be found at mygitlab.com/admin/runners
 ```sh
 # Must cd to scripts first and not run the script from outside the folder.
 user@local:~$ cd scripts
