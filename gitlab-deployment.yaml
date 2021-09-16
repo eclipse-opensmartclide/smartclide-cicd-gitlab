@@ -29,6 +29,13 @@ spec:
             - containerPort: 80
             - containerPort: 443
             - containerPort: 22
-            - containerPort: 5050  
+            - containerPort: 5050
+          volumeMounts:
+            - mountPath: /etc/gitlab
+              name: gitlab-volume  
+      volumes:
+        - name: gitlab-volume
+          persistentVolumeClaim:
+            claimName: gitlab-pvc
       hostname: gitlab-smartclide
       restartPolicy: Always
