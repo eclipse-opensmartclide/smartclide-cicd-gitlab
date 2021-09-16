@@ -1,0 +1,30 @@
+# This is a kubernetes configuration file describing
+# how we want to have a gitlab-runner deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitlab-runner-deployment
+  labels:
+    app: gitlab-runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitlab-runner
+  template:
+    metadata:
+      labels:
+        app: gitlab-runner
+    spec:
+      containers:
+        - name: gitlab-runner
+          image: gitlab/gitlab-runner:alpine          
+          volumeMounts:
+            - mountPath: /etc/gitlab-runner
+              name: gitlab-volume
+      volumes:
+        - name: gitlab-volume
+          persistentVolumeClaim:
+            claimName: gitlab-pvc
+      hostname: gitlab-runner-smartclide
+      restartPolicy: Always

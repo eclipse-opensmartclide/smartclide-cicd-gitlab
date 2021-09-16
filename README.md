@@ -52,12 +52,11 @@ user@local:~/scripts$ ./helm.sh
 ```
 
 ## Kubernetes yaml
-This is an experimental way to install Gitlab in a Kubernetes cluster by defining k8s custom yaml files.<br>
+This is an experimental way to install Gitlab & Gitlab runner in a Kubernetes cluster by defining k8s custom yaml files.<br>
 This is a WIP so it needs a lot of tinkering of YAML files before applying them to kubectl.
 #### Install
 ```sh
-user@local:~$ kubectl apply -f gitlab-deployment.yaml
-user@local:~$ kubectl apply -f gitlab-service.yaml
+user@local:~$ kubectl apply -f k8s
 ```
 
 ## Gitlab initialization
