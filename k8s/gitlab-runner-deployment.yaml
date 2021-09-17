@@ -22,9 +22,20 @@ spec:
           volumeMounts:
             - mountPath: /etc/gitlab-runner
               name: gitlab-volume
+              subPath: gitlab-runner
+            - mountPath: /certs
+              name: gitlab-volume
+              subPath: config/ssl
+            - mountPath: /var/run/docker.sock
+              name: dockersock
+          ports:
+            - containerPort: 443
       volumes:
         - name: gitlab-volume
           persistentVolumeClaim:
             claimName: gitlab-pvc
+        - name: dockersock
+          hostPath:
+            path: /var/run/docker.sock
       hostname: gitlab-runner-smartclide
       restartPolicy: Always

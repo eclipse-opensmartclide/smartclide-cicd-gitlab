@@ -33,6 +33,13 @@ spec:
           volumeMounts:
             - mountPath: /etc/gitlab
               name: gitlab-volume
+              subPath: config
+            - mountPath: /var/log/gitlab
+              name: gitlab-volume
+              subPath: logs
+            - mountPath: /var/opt/gitlab
+              name: gitlab-volume
+              subPath: data
       volumes:
         - name: gitlab-volume
           persistentVolumeClaim:
