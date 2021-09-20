@@ -15,5 +15,10 @@
 
 helm repo add gitlab https://charts.gitlab.io/
 helm repo update
-helm upgrade --install -f values.yaml gitlab gitlab/gitlab --timeout 600s \
+
+# Install gitlab helm chart
+helm upgrade --install -f gitlab-values.yaml gitlab gitlab/gitlab --timeout 600s \
     --set certmanager-issuer.email=me@example.com
+
+# Install gitlab-runner helm chart
+helm install gitlab-runner -f gitlab-runner-values.yaml gitlab/gitlab-runner
