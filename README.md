@@ -50,9 +50,6 @@ To Helm install gitlab update the values.yaml in script folder and run the follo
 user@local:~$ cd scripts
 user@local:~/scripts$ ./helm.sh
 ```
---#### Register Gitlab-runner
---Update var KUBERNETES_GITLAB_RUNNER_DEPLOYMENT_NAME in .env with kubernetes gitlab-runner deployment name.
-
 
 ## Kubernetes yaml
 This is an experimental way to install Gitlab & Gitlab runner in a Kubernetes cluster by defining k8s custom yaml files.<br>
