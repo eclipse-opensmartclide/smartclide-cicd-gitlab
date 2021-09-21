@@ -21,4 +21,4 @@ helm upgrade --install -f gitlab-values.yaml gitlab gitlab/gitlab --timeout 600s
     --set certmanager-issuer.email=me@example.com
 
 # Install gitlab-runner helm chart
-helm install gitlab-runner -f gitlab-runner-values.yaml gitlab/gitlab-runner
+helm install -f gitlab-runner-values.yaml deployment gitlab/gitlab-runner

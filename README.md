@@ -29,7 +29,7 @@ The variables can be found at mygitlab.com/admin/runners
 ```sh
 # Must cd to scripts first and not run the script from outside the folder.
 user@local:~$ cd scripts
-user@local:~/scripts$ ./gitlab-runner-register.sh
+user@local:~/scripts$ ./gitlab-runner-docker-register.sh
 ```
 ## Helm
 Helm is the official recommended way of installing gitlab in the Kubernetes.<br>
@@ -50,6 +50,9 @@ To Helm install gitlab update the values.yaml in script folder and run the follo
 user@local:~$ cd scripts
 user@local:~/scripts$ ./helm.sh
 ```
+--#### Register Gitlab-runner
+--Update var KUBERNETES_GITLAB_RUNNER_DEPLOYMENT_NAME in .env with kubernetes gitlab-runner deployment name.
+
 
 ## Kubernetes yaml
 This is an experimental way to install Gitlab & Gitlab runner in a Kubernetes cluster by defining k8s custom yaml files.<br>
@@ -69,4 +72,8 @@ update the .env variables(TOKEN and GITLAB_HOST) and execute the following scrip
 user@local:~$ cd scripts
 user@local:~/scripts$ ./init-gitlab-groups.sh
 ```
-
+#### Register Gitlab-runner for helm and k8s
+Update vars KUBERNETES_GITLAB_RUNNER_DEPLOYMENT_NAME, GITLAB_HOST and GITLAB_RUNNER_REGISTRATION_TOKEN in .env file and run...
+```sh
+user@local:~/scripts$ ./gitlab-runner-kube-register.sh
+```
