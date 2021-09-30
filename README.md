@@ -69,7 +69,7 @@ update the .env variables(TOKEN and GITLAB_HOST) and execute the following scrip
 user@local:~$ cd scripts
 user@local:~/scripts$ ./init-gitlab-groups.sh
 ```
-#### Register Gitlab-runner for helm and k8s
+#### Register Gitlab runner for helm and k8s
 Update vars KUBERNETES_GITLAB_RUNNER_DEPLOYMENT_NAME, GITLAB_HOST and GITLAB_RUNNER_REGISTRATION_TOKEN in .env file and run...
 ```sh
 user@local:~/scripts$ ./gitlab-runner-kube-register.sh
