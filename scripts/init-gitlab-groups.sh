@@ -1,4 +1,17 @@
 #!/bin/bash
+#*******************************************************************************
+# Copyright (c) 2021 AIR Institute
+#
+# This program and the accompanying materials
+# are made available under the terms of the Eclipse Public License 2.0
+# which accompanies this distribution, and is available at
+# https://www.eclipse.org/legal/epl-2.0/
+#
+# SPDX-License-Identifier: EPL-2.0
+#
+# Contributors:
+#     Adrian Diarte Prieto - initial API and implementation
+#*******************************************************************************
 # This script initilizes gitlab with the required SmartCLIDE groups.
 # This is done by using gitlab API with curl command.
 # The token and gitlab host is loaded from .env file.
